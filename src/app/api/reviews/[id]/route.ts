@@ -5,11 +5,12 @@ const prisma = new PrismaClient();
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params;
     const review = await prisma.review.findUnique({
-      where: { id: params.id },
+      where: { id },
       include: {
         product: {
           select: {
@@ -41,9 +42,10 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params;
     const body = await request.json();
     const { name, comment, rating } = body;
 
@@ -52,7 +54,7 @@ export async function PUT(
     }
 
     const review = await prisma.review.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         name,
         comment,
@@ -73,11 +75,12 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params;
     await prisma.review.delete({
-      where: { id: params.id }
+      where: { id }
     });
 
     return NextResponse.json({ message: 'Review deleted successfully' });
