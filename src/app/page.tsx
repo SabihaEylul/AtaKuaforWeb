@@ -37,8 +37,12 @@ export default function HomePage() {
         if (!res.ok) throw new Error('Hizmetler yüklenemedi');
         const data = await res.json();
         setServices(data);
-      } catch (err: any) {
-        setServicesError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setServicesError(err.message);
+        } else {
+          setServicesError('Bilinmeyen bir hata oluştu');
+        }
       } finally {
         setServicesLoading(false);
       }
@@ -54,8 +58,12 @@ export default function HomePage() {
         if (!res.ok) throw new Error('Ürünler yüklenemedi');
         const data = await res.json();
         setProducts(data);
-      } catch (err: any) {
-        setProductsError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setServicesError(err.message);
+        } else {
+          setServicesError('Bilinmeyen bir hata oluştu');
+        }
       } finally {
         setProductsLoading(false);
       }
