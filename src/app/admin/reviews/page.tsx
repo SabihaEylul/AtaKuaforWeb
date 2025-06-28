@@ -123,21 +123,25 @@ export default function AdminReviewsPage() {
                   </tr>
                 ) : (
                   reviews.map((review) => {
-                    const item = review.product || review.service;
                     const itemName = review.product ? review.product.title : (review.service ? review.service.name : 'N/A');
-                    const itemImage = review.product ? review.product.imageUrl : (review.service ? review.service.imageUrl : '/images/placeholder.png');
+                    const itemImage = review.product?.imageUrl || review.service?.imageUrl || '/images/placeholder.png';
 
                     return (
                       <tr key={review.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          {itemImage && (
+                          {itemImage && itemImage !== '/images/placeholder.png' ? (
                             <Image
                               src={itemImage}
                               alt={itemName}
                               width={50}
                               height={50}
+                              unoptimized
                               className="object-cover rounded"
                             />
+                          ) : (
+                            <div className="w-12 h-12 bg-gray-200 rounded flex items-center justify-center">
+                              <span className="text-gray-500 text-xs">Resim Yok</span>
+                            </div>
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">

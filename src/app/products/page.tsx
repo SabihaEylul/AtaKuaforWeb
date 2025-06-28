@@ -182,6 +182,7 @@ export default function ProductsPage() {
                       src={product.imageUrl}
                       alt={product.title}
                       fill
+                      unoptimized
                       className="object-cover object-center"
                     />
                   </div>

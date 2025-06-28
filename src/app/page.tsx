@@ -90,6 +90,7 @@ export default function HomePage() {
           src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80"
           alt="Ata Kuaför Dükkanı"
           fill
+          unoptimized
           className="object-cover object-center opacity-70"
           priority
         />
@@ -166,6 +167,7 @@ export default function HomePage() {
                         src={service.imageUrl}
                         alt={service.name}
                         fill
+                        unoptimized
                         className="object-cover"
                       />
                     )}
@@ -201,6 +203,7 @@ export default function HomePage() {
                         src={product.imageUrl}
                         alt={product.title}
                         fill
+                        unoptimized
                         className="object-cover"
                       />
                     )}

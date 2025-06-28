@@ -176,6 +176,7 @@ export default function ServicesPage() {
                       src={service.imageUrl}
                       alt={service.name}
                       fill
+                      unoptimized
                       className="object-cover object-center"
                     />
                   </div>

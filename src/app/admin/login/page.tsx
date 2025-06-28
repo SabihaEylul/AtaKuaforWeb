@@ -42,6 +42,7 @@ export default function LoginPage() {
         src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80"
         alt="Kuaför Dükkanı"
         fill
+        unoptimized
         className="object-cover object-center opacity-70"
         priority
       />
